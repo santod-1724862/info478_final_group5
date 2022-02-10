@@ -4,6 +4,8 @@
 
 - Our current purpose for proposing this type of analysis on automobile related traffic incidences and the finding the main reason for its prevalence in the United States. Interest in the topic relates to whether the belief that young drivers are most dangerous and what factors most impact outcomes of traffic accidents. 
 
+__DELETE ME We anticipate to struggle finding novel insights in our source datasets. Purportedly, most of the data collected has already been thoroughly analyzed, so we expect to spend a decent amount of time trying to find unique research question to answer. Furthermore, in files that multiple group members are working on we expect to run in to merge conflicts, so we will rely on consistent communication to manage this problem. Finally, we also expect to struggle with cleaning and joining the datasets, which is a common problem for data collected from different sources. DELETE ME__ 
+
 ## Existing Research
 
 _Driver-related risk factors of fatal road traffic crashes associated with alcohol or drug impairment_
@@ -35,6 +37,8 @@ World Bank Data Catalogue:
 
 When looking at our project proposal and determining the target audience, we see that several audiences could be particularly interested in our project. For example, insurance companies or policy makers would be especially interested  in the information that we are to collect to determine how certain circumstances affect risk factors and how these policy makers could potentially better allocate resources for the benefit of the community.
 
+__DELETE ME We anticipate to struggle finding novel insights in our source datasets. Purportedly, most of the data collected has already been thoroughly analyzed, so we expect to spend a decent amount of time trying to find unique research question to answer. Furthermore, in files that multiple group members are working on we expect to run in to merge conflicts, so we will rely on consistent communication to manage this problem. Finally, we also expect to struggle with cleaning and joining the datasets, which is a common problem for data collected from different sources. DELETE ME__ 
+
 ## Main Takeaways
 
 When our audience looks at our project and our resources, we hope that they are able to learn the correlation between traffic accidents and risk factors present. More specifically, we hope to present things such as age or the impairment of the driver to see how they would possibly affect the severity of the traffic accidents or the frequency of the traffic accidents. 
@@ -52,3 +56,5 @@ We expect to discover and implement new libraries in our code as we analyze the 
 ### What major challenges do you anticipate? 
 
 We anticipate to struggle finding novel insights in our source datasets. Purportedly, most of the data collected has already been thoroughly analyzed, so we expect to spend a decent amount of time trying to find unique research question to answer. Furthermore, in files that multiple group members are working on we expect to run in to merge conflicts, so we will rely on consistent communication to manage this problem. Finally, we also expect to struggle with cleaning and joining the datasets, which is a common problem for data collected from different sources.
+
+__DELETE ME We anticipate to struggle finding novel insights in our source datasets. Purportedly, most of the data collected has already been thoroughly analyzed, so we expect to spend a decent amount of time trying to find unique research question to answer. Furthermore, in files that multiple group members are working on we expect to run in to merge conflicts, so we will rely on consistent communication to manage this problem. Finally, we also expect to struggle with cleaning and joining the datasets, which is a common problem for data collected from different sources. DELETE ME__ 
