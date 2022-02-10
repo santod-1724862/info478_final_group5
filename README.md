@@ -4,8 +4,6 @@
 
 - Our current purpose for proposing this type of analysis on automobile related traffic incidences and the finding the main reason for its prevalence in the United States. Interest in the topic relates to whether the belief that young drivers are most dangerous and what factors most impact outcomes of traffic accidents. 
 
-__DELETE ME We anticipate to struggle finding novel insights in our source datasets. Purportedly, most of the data collected has already been thoroughly analyzed, so we expect to spend a decent amount of time trying to find unique research question to answer. Furthermore, in files that multiple group members are working on we expect to run in to merge conflicts, so we will rely on consistent communication to manage this problem. Finally, we also expect to struggle with cleaning and joining the datasets, which is a common problem for data collected from different sources. DELETE ME__ 
-
 ## Existing Research
 
 _Driver-related risk factors of fatal road traffic crashes associated with alcohol or drug impairment_
@@ -37,7 +35,6 @@ World Bank Data Catalogue:
 
 When looking at our project proposal and determining the target audience, we see that several audiences could be particularly interested in our project. For example, insurance companies or policy makers would be especially interested  in the information that we are to collect to determine how certain circumstances affect risk factors and how these policy makers could potentially better allocate resources for the benefit of the community.
 
-__DELETE ME We anticipate to struggle finding novel insights in our source datasets. Purportedly, most of the data collected has already been thoroughly analyzed, so we expect to spend a decent amount of time trying to find unique research question to answer. Furthermore, in files that multiple group members are working on we expect to run in to merge conflicts, so we will rely on consistent communication to manage this problem. Finally, we also expect to struggle with cleaning and joining the datasets, which is a common problem for data collected from different sources. DELETE ME__ 
 
 ## Main Takeaways
 
@@ -45,9 +42,9 @@ When our audience looks at our project and our resources, we hope that they are 
 
 ## Technical Description
 
-- The goal of the final deliverable is to have a working and visually pleasing shiny interactable that dynamcially change depending on user input. 
+- The goal of the final deliverable is to have a working and visually pleasing shiny interactable that dynamcially change depending on user input. We also plan to include a Rmd and HTML file that details the calculations that needed to be made in preparing the datasets from the various sources.
 
-- We expect to have formatting issues when merging and cleaning datasets. It is likely that columns will have to be omitted due to a lack of clear labeling and not containing infomration relevant. 
+- We expect to have formatting issues when merging and cleaning datasets. It is likely that columns will have to be omitted due to a lack of clear labeling and not containing infomration relevant. One problem we may encounter is finding datasets that are reliable and have relevant information related to health statistics.
 
 ### What new technical skills will need to learn in order to complete your project?
 
@@ -56,5 +53,3 @@ We expect to discover and implement new libraries in our code as we analyze the 
 ### What major challenges do you anticipate? 
 
 We anticipate to struggle finding novel insights in our source datasets. Purportedly, most of the data collected has already been thoroughly analyzed, so we expect to spend a decent amount of time trying to find unique research question to answer. Furthermore, in files that multiple group members are working on we expect to run in to merge conflicts, so we will rely on consistent communication to manage this problem. Finally, we also expect to struggle with cleaning and joining the datasets, which is a common problem for data collected from different sources.
-
-__DELETE ME We anticipate to struggle finding novel insights in our source datasets. Purportedly, most of the data collected has already been thoroughly analyzed, so we expect to spend a decent amount of time trying to find unique research question to answer. Furthermore, in files that multiple group members are working on we expect to run in to merge conflicts, so we will rely on consistent communication to manage this problem. Finally, we also expect to struggle with cleaning and joining the datasets, which is a common problem for data collected from different sources. DELETE ME__ 
