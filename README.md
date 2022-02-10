@@ -19,7 +19,7 @@ _Human factors in the causation of road traffic crashes_
 - This study attempts to highlight the human behavioral factors that are most responsible for causing traffic accidents and distinguishes 4 categories as potential risks for causing an accident: things that reduce capabilities on a long-term basis, a short-term basis, things that promote risk taking behaviors with long-term impacts, and promotion of risk-taking behaviors on a short-term basis. The study essentially concludes with the idea that there are many reasons that accidents occur but categorizing human behaviors that increase risk of accident clarifies the issue. 
 
 
-Data sources:
+## Data sources:
 
 CDC Data Catalogue filtered for Motor Vehicle data:
 
