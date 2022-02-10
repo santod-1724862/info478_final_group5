@@ -31,6 +31,13 @@ CDC Data Catalogue filtered for Motor Vehicle data:
 World Bank Data Catalogue:
 1. https://databank.worldbank.org/reports.aspx?source=2&series=SH.STA.TRAF.P5&country=#
 
+## Intended Audience
+
+When looking at our project proposal and determining the target audience, we see that several audiences could be particularly interested in our project. For example, insurance companies or policy makers would be especially interested  in the information that we are to collect to determine how certain circumstances affect risk factors and how these policy makers could potentially better allocate resources for the benefit of the community.
+
+## Main Takeaways
+
+When our audience looks at our project and our resources, we hope that they are able to learn the correlation between traffic accidents and risk factors present. More specifically, we hope to present things such as age or the impairment of the driver to see how they would possibly affect the severity of the traffic accidents or the frequency of the traffic accidents. 
 
 ## Technical Description
 
