@@ -2,7 +2,7 @@
 
 ## Project Description
 
-- Our current purpose for proposing this type of analysis on automobile related traffic incidences and the finding the main reason for its prevalence in the United States. Interest in the topic relates to whether the belief that young drivers are most dangerous and what factors most impact outcomes of traffic accidents. 
+- Our current purpose for proposing this type of analysis on automobile related traffic incidences and the finding the main reason for its prevalence in the United States. We will attempt to address the extent drivers are at risk of traffic related injuries based on multiple risk factors. Common problems such as **Alcohol Level**, **Average Temperature**, and **Time of Occurrence** will be analysed to understand the extent to which they are prevalent in affecting mortality rate. 
 
 ## Existing Research
 
@@ -31,18 +31,18 @@ Kaggle:
 
 1. https://www.kaggle.com/sobhanmoosavi/us-accidents
 
-### Perhaps remove this dataset entirely
-World Bank Data Catalogue:
-1. https://databank.worldbank.org/reports.aspx?source=2&series=SH.STA.TRAF.P5&country=#
+GBD Compare Tool
+
+1. https://vizhub.healthdata.org/gbd-compare/
 
 ## Intended Audience
 
-When looking at our project proposal and determining the target audience, we see that several audiences could be particularly interested in our project. For example, insurance companies or policy makers would be especially interested  in the information that we are to collect to determine how certain circumstances affect risk factors and how these policy makers could potentially better allocate resources for the benefit of the community.
+When looking at our project proposal and determining the target audience, we see that several audiences could be particularly interested in our project. For example, insurance companies or policy makers would be especially interested  in the information that we are to collect to determine how certain circumstances affect risk factors and how these policy makers could potentially better allocate resources for the benefit of the community. Our region will be limited to within the US and thus our findings will have more weight to those living here. This will mean that explanations or insights will take inspiration from US culture, behavior, and policy.
 
 
 ## Main Takeaways
 
-When our audience looks at our project and our resources, we hope that they are able to learn the correlation between traffic accidents and risk factors present. More specifically, we hope to present things such as age or the impairment of the driver to see how they would possibly affect the severity of the traffic accidents or the frequency of the traffic accidents. 
+When our audience looks at our project and our resources, we hope that they are able to learn the correlation between traffic accidents and risk factors present. More specifically, we hope to present things such as age or the impairment of the driver to see how they would possibly affect the severity of the traffic accidents or the frequency of the traffic accidents. We also want to understand the extent to which certain factors affect mortality and whether or not they interesect in relation to mortality. 
 
 ## Technical Description
 
@@ -52,7 +52,7 @@ When our audience looks at our project and our resources, we hope that they are 
 
 ### What new technical skills will need to learn in order to complete your project?
 
-We expect to discover and implement new libraries in our code as we analyze the data and implement new visualizations. This will involve learning new functions in ggplot2, and new data processing functions within the `tidyverse` package set.
+We expect to discover and implement new libraries in our code as we analyze the data and implement new visualizations. This will involve learning new functions in ggplot2, and new data processing functions within the `tidyverse` package set. We will be working with a large dataset and adequate cleaning and datawrangling skills will be needed to create a shareable _csv_ file for group work. 
 
 ### What major challenges do you anticipate? 
 
