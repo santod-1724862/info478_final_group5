@@ -6,11 +6,11 @@ library(scales)
 library(tidyverse)
 
 
-accidents_by_temp <- read_csv('../Data/accident_data_large.csv')
+accidents_by_temp <- read_csv('Data/accident_data_large.csv')
 
-gbd_data <- read_csv('../Data/GBD_data.csv')
+gbd_data <- read_csv('Data/GBD_data.csv')
 
-gbd_age <- read_csv('../Data/gbd_age.csv')
+gbd_age <- read_csv('Data/gbd_age.csv')
 
 
 # DATA CLEANING
@@ -35,7 +35,7 @@ motor_vehicle_death_all <- motor_vehicle_death %>%
   filter(type == "all_ages") %>% select(-type)
 
 # Bar Graph on the distribution of traffic accident by state
-hist_states_freq <- ggplot(us_accident, aes(x = State)) + 
+hist_states_freq <- ggplot(accidents_by_temp, aes(x = State)) + 
   geom_freqpoly(color = "black", stat = 'count')
 
 # Impaired_Driving_Death_Rate__by_Age_and_Gender__2012___2014__All_States
