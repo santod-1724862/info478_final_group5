@@ -31,10 +31,14 @@ This bar chart represents the accidents that occurred in the United States betwe
 
 ## Relationship/Correlation Visualizations
 
-You can also embed plots, for example:
 
 ```{r correlation, echo=FALSE}
 age_scatter
 ```
 
 This scatter plot shows Deaths and DALYs rate per 100,000 for road traffic accidents across the United States. As expected, the DALYs rate decreases along with age, as a result of the higher life expectancy at younger ages. This plot provides two interesting insights; firstly, on average the age groups with the highest death rates from road traffic accidents people between 20 and 24 years old as well as those that are 75 years old or older. This potentially indicates that on a population level, drivers in that age group tend to drive more risky than new drivers (15-19 years old) and more experienced, but still young drivers (ages 25-49). It also shows that older drivers on average may be more prone to mistakes or have some tendencies that lead to fatal accidents compared to the age groups with lower death rates. The second key insight that this plot highlights is that, there is a substantial difference in DALYs rate between age groups 25 to 49 and 50 to 74. That would seem to indicate that, on average, severe decreases in driving skills that someone may have as a result of age, happens between ages 50 and 74, even though some of this gap is accounted for in differences in life expectancy, the gap is large enough for there likely to be something else causing it.
+
+```{r map, echo=FALSE}
+death_ratio_heatmap
+```
+
