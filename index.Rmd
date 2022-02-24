@@ -12,6 +12,7 @@ library('patchwork')
 options(scipen = 999)
 ```
 
+
 ## Reporting basic statistics
 
 ```{r summary, echo=FALSE}
@@ -24,17 +25,19 @@ This table shows the summary of injuries and deaths that occurred from road traf
 
 ```{r distribution, echo=FALSE}
 temp_histogram + temp_col_chart
+bar_states
 ```
 
-This bar chart represents the accidents that occurred in the United States between February of 2016 and December of 2020. As would be expected, the most accidents occur at mild temperatures, due to there being the most number of days in that range compared to more extreme temperatures. However, it is interpreting to not that there are more accidents that occur in significantly warm weather (more than 70 °F), than accidents that occur in colder weather (under 49 °F). It will be interesting to see how much of this temperature distribution is explained by location (as a result of highly populated cities in the U.S. with warmer average temperatures such as Los Angeles, Dallas, and Miami), so seeing the distribution of colder and warmer weather accidents on a map is something that will be interesting to look at for the final part of this project.
+The first histogram shows the distribution of temperatures that various accidents occurred. As would be expected, the most accidents occur at mild temperatures, due to there being the most number of days in that range compared to more extreme temperatures. However, it is interpreting to not that there are more accidents that occur in significantly warm weather (more than 70 °F), than accidents that occur in colder weather (under 49 °F). It will be interesting to see how much of this temperature distribution is explained by location (as a result of highly populated cities in the U.S. with warmer average temperatures such as Los Angeles, Dallas, and Miami), so seeing the distribution of colder and warmer weather accidents on a map is something that will be interesting to look at for the final part of this project. 
+The final bar graph represents the accidents that occurred in the United States between February of 2016 and December of 2020 by State. It shows that Illinois and New York have the largest weight within the dataset. There is a wide range of reported accidents depending on location. 
 
 
 ## Relationship/Correlation Visualizations
-
-You can also embed plots, for example:
 
 ```{r correlation, echo=FALSE}
 age_scatter
 ```
 
 This scatter plot shows Deaths and DALYs rate per 100,000 for road traffic accidents across the United States. As expected, the DALYs rate decreases along with age, as a result of the higher life expectancy at younger ages. This plot provides two interesting insights; firstly, on average the age groups with the highest death rates from road traffic accidents people between 20 and 24 years old as well as those that are 75 years old or older. This potentially indicates that on a population level, drivers in that age group tend to drive more risky than new drivers (15-19 years old) and more experienced, but still young drivers (ages 25-49). It also shows that older drivers on average may be more prone to mistakes or have some tendencies that lead to fatal accidents compared to the age groups with lower death rates. The second key insight that this plot highlights is that, there is a substantial difference in DALYs rate between age groups 25 to 49 and 50 to 74. That would seem to indicate that, on average, severe decreases in driving skills that someone may have as a result of age, happens between ages 50 and 74, even though some of this gap is accounted for in differences in life expectancy, the gap is large enough for there likely to be something else causing it.
+
+*Disclaimer: Dataset after cleaning lost a large amount of observations and shifted distribution by state greatly*

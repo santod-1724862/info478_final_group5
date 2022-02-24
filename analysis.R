@@ -35,8 +35,8 @@ motor_vehicle_death_all <- motor_vehicle_death %>%
   filter(type == "all_ages") %>% select(-type)
 
 # Bar Graph on the distribution of traffic accident by state
-hist_states_freq <- ggplot(accidents_by_temp, aes(x = State)) + 
-  geom_freqpoly(color = "black", stat = 'count')
+bar_states <- ggplot(accidents_by_temp, aes(x = State)) + 
+  geom_bar()
 
 # Impaired_Driving_Death_Rate__by_Age_and_Gender__2012___2014__All_States
 impaired_driving_death <-
