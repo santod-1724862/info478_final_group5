@@ -4,6 +4,7 @@ library(dplyr)
 library(plotly)
 library(shiny)
 
+source("map_server.R")
 
 
 
@@ -16,7 +17,7 @@ server <- function(input, output) {
   # will updated based on user input 
   # insert code for chart here
   
-
+  map_function(input, output)
     # filters the dataset from the widgets 
     
  

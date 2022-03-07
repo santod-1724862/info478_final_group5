@@ -1,8 +1,11 @@
+
 #install packages
 library(shiny)
 library(ggplot2)
 library(plotly)
 
+# source pages
+source("map_ui.R")
 # read dataset 
 
 
@@ -36,7 +39,7 @@ page_one <- tabPanel(
 # --------- DEFINING UI: PUTTING PAGES TOGETHER ---------- 
 ui <- navbarPage(
   "Title",
-  page_one
+  page_one,
+  map_page
   #insert other pages here
 )
-
