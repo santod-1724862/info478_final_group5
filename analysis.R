@@ -118,8 +118,7 @@ temp_col_chart <- temps_grouped %>%
 # age analysis
 age_accidents <- gbd_age %>%
   filter(sex_name == "Both") %>%
-  filter(age_name != "All Ages") %>%
-  filter(metric_name == "Rate")
+  filter(age_name != "All Ages")
 
 age_death_dalys <- age_accidents %>%
   select(!c(measure_id, upper, lower)) %>%
@@ -131,3 +130,4 @@ age_scatter <- age_death_dalys %>%
   ggplot(aes(x = Deaths, y = DALYs, colour = age_name)) + geom_point() +
   labs(title = "Death and DALYs Rate (per 100,000) Caused by Road Traffic Accidents, by State and Age Group",
        x = "Death Rate", y = "DALYs Rate")
+
