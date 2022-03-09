@@ -8,13 +8,13 @@ states <- geojsonio::geojson_read("https://rstudio.github.io/leaflet/json/us-sta
 
 get_map_data <- function(input){
   if(input$map_type == "dd"){
-    return(motor_vehicle_death_all %>% filter(year == input$map_year)  %>% select(name, value))
+    return(motor_vehicle_death_all %>% filter(year == input$map_year)  %>% select(state, value))
   }else if(input$map_type == "idd"){
-    return(impaired_driving_death_all %>% filter(year == input$map_year)  %>% select(name, value))
+    return(impaired_driving_death_all %>% filter(year == input$map_year)  %>% select(state, value))
   }else{
     md <- motor_vehicle_death_all %>% filter(year == input$map_year) %>% rename(vehicle_death = value) 
     idd <- impaired_driving_death_all %>% filter(year == input$map_year) %>% rename(impaired_death = value)
-    res <- merge(md, idd, by=c("name")) %>% mutate(value = round(100 * impaired_death / vehicle_death), 1) %>% select(name, value)
+    res <- merge(md, idd, by=c("state")) %>% mutate(value = round(100 * impaired_death / vehicle_death), 1) %>% select(state, value)
     return(res)
   }
 }
@@ -30,7 +30,7 @@ map_function <- function(input, output){
     a_type <- input$map_type
    
     selected_map_data <-  get_map_data(input)
-    map_data <- sp::merge(states, selected_map_data, by="name")
+    map_data <- sp::merge(states, selected_map_data, by.x="name", by.y="state")
     pal <- colorBin("plasma", domain = map_data$value, bins = bins[[input$map_type]])
     
     labels <- sprintf(

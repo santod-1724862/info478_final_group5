@@ -24,7 +24,7 @@ motor_vehicle_death <-
     cols = all_ages_2012:female_2014,
     names_to = c("type", "year"),
     names_pattern = "(.+)_(2014|2012)"
-  ) %>% rename(name = state)
+  )
 
 motor_vehicle_death_gender <- motor_vehicle_death %>%
   filter(type == "male" | type == "female")
@@ -44,7 +44,7 @@ impaired_driving_death <-
     cols = all_ages_2012:female_2014,
     names_to = c("type", "year"),
     names_pattern = "(.+)_(2014|2012)"
-  ) %>% rename(name=state)
+  )
 
 impaired_driving_death_gender <- impaired_driving_death %>%
   filter(type == "male" | type == "female")
@@ -54,6 +54,24 @@ impaired_driving_death_age <- impaired_driving_death %>%
   separate(type, c("age_min", "age_max"), sep = "_")
 impaired_driving_death_all <- impaired_driving_death %>%
   filter(type == "all_ages") %>% select(-type)
+
+# DATA VISUALIZATIONS
+states_map_data <- map_data("state") %>% rename(state = region)
+death_ratio_map <-
+  left_join(states_map_data,
+            impaired_driving_death_all %>%
+              rename(impaired_death = value),
+            by = "state")
+death_ratio_map_data <- death_ratio_map %>%
+  left_join(motor_vehicle_death_all %>%
+              rename(vehicle_death = value) ,  by =
+              "state") %>%
+  mutate(ratio = impaired_death / vehicle_death)
+
+death_ratio_heatmap <- ggplot(death_ratio_map_data, aes(long, lat, group = group)) +
+  geom_polygon(aes(fill = ratio), color = "white") +
+  scale_fill_viridis_c(option = "C") + theme_void() + labs(title="Heatmap of Impaired Driving Deaths to Overall Driving Deaths")
+
 
 # statistical testing
 
