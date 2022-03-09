@@ -15,6 +15,27 @@ gbd_age <- read_csv('Data/gbd_age.csv')
 
 # DATA CLEANING
 
+# Motor_Vehicle_Occupant_Death_Rate__by_Age_and_Gender__2012___2014__All_States
+# Get motor vehicle data
+motor_vehicle_death <-
+  read.csv("Data/motor_vehicle_death.csv") %>% na_if("") %>%
+  setNames(tolower(gsub("\\.+", "_", names(.)))) %>% drop_na(state) %>%
+  pivot_longer(
+    cols = all_ages_2012:female_2014,
+    names_to = c("type", "year"),
+    names_pattern = "(.+)_(2014|2012)"
+  )
+
+motor_vehicle_death_gender <- motor_vehicle_death %>%
+  filter(type == "male" | type == "female")
+motor_vehicle_death_age <- motor_vehicle_death %>%
+  filter(str_detect(type, "age_")) %>%
+  mutate(type = gsub("age_", "", type)) %>%
+  separate(type, c("age_min", "age_max"), sep = "_")
+motor_vehicle_death_all <- motor_vehicle_death %>%
+  filter(type == "all_ages") %>% select(-type)
+
+
 # Get impaired driving data
 impaired_driving_death <-
   read.csv("Data/impaired_driving_death.csv") %>%
@@ -33,6 +54,20 @@ impaired_driving_death_age <- impaired_driving_death %>%
   separate(type, c("age_min", "age_max"), sep = "_")
 impaired_driving_death_all <- impaired_driving_death %>%
   filter(type == "all_ages") %>% select(-type)
+
+# DATA VISUALIZATIONS
+states_map_data <- map_data("state") %>% rename(state = region)
+death_ratio_map <-
+  left_join(states_map_data,
+            impaired_driving_death_all %>%
+              rename(impaired_death = value),
+            by = "state")
+death_ratio_map_data <- death_ratio_map %>%
+  left_join(motor_vehicle_death_all %>%
+              rename(vehicle_death = value) ,  by =
+              "state") %>%
+  mutate(ratio = impaired_death / vehicle_death)
+
 
 # DATA VISUALIZATIONS
 states_map_data <- map_data("state") %>% rename(state = region)

@@ -2,6 +2,7 @@ library(leaflet)
 library(dplyr)
 library(tidyr)
 library(stringr)
+library(maps)
 
 # From http://leafletjs.com/examples/choropleth/us-states.js
 states <- geojsonio::geojson_read("https://rstudio.github.io/leaflet/json/us-states.geojson", what = "sp")
