@@ -35,6 +35,13 @@ age_data <- age_data[order(age_data$location_name),]
 
 names(age_data)[names(age_data) == 'DALYs (Disability-Adjusted Life Years)'] <- 'DALYs'
 
+#or and rr temperature
+or_state_input <- selectInput(
+  "state_or_rr",
+  label=h3("Select State"),
+  choices = unique(state_OR_RR$State)
+)
+
 # age page widgets
 
 state_input <- selectInput(
@@ -88,6 +95,19 @@ age_page <- tabPanel(
       h3("Fatal Accidents by State Separated by Age Group"),
       plotOutput("age_bar"),
       textOutput(outputId = "age_analysis")
+    )
+  )
+)
+
+tempature_or_rr_page <- tabPanel(
+  "Tempature Relative Risk and Odds Risk",
+  sidebarLayout(
+    sidebarPanel(
+      or_state_input
+    ),
+    mainPanel (
+      plotOutput("or_bar"),
+      plotOutput("rr_bar")
     )
   )
 )
@@ -148,6 +168,7 @@ ui <- navbarPage(
   titlePanel("US Driving Death Analysis"),
   map_page,
   age_page,
+  tempature_or_rr_page,
   summary_panel
   #insert other pages here
 )

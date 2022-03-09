@@ -40,6 +40,24 @@ server <- function(input, output) {
     
   })
   
+  output$or_bar <- renderPlot ({
+    filtered_rr <- state_OR_RR %>%
+      filter(State %in% input$state_or_rr)
+    
+    ggplot(state_OR_RR, aes(y=check_OR_state(state_OR_RR, input$state_or_rr), x=input$state_or_rr)) + 
+      geom_bar(position="dodge", stat="identity")
+  })
+  
+  output$rr_bar <- renderPlot ({
+    
+    filtered_rr <- state_OR_RR %>%
+      filter(State %in% input$state_or_rr)
+    
+    ggplot(state_OR_RR, aes(y=check_RR_state(state_OR_RR, input$state_or_rr), x=input$state_or_rr)) + 
+      geom_bar(position="dodge", stat="identity")
+  })
+  
+  
   output$age_bar <- renderPlot({
     
     filtered_bar <- age_data %>%
