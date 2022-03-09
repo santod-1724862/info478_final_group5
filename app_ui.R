@@ -3,6 +3,7 @@
 library(shiny)
 library(ggplot2)
 library(plotly)
+library(bslib)
 
 # source pages
 source("map_ui.R")
@@ -144,7 +145,7 @@ summary_panel <- tabPanel(
 # --------- DEFINING UI: PUTTING PAGES TOGETHER ---------- 
 ui <- navbarPage(
   theme = bs_theme(version = 4, bootswatch = "minty"),
-  "US Driving Death Analysis",
+  titlePanel("US Driving Death Analysis"),
   map_page,
   age_page,
   summary_panel
