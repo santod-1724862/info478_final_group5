@@ -131,3 +131,49 @@ age_scatter <- age_death_dalys %>%
   labs(title = "Death and DALYs Rate (per 100,000) Caused by Road Traffic Accidents, by State and Age Group",
        x = "Death Rate", y = "DALYs Rate")
 
+# Creating a dataset for finding OR/RR for Humidity and Temp
+severity_temp_OR_RR <- accidents_by_temp %>%
+  select(Severity, `temp_range(F)`, `Temperature(F)`, `Humidity(%)` , Weather_Timestamp, State)
+
+for(i in 1:nrow(severity_temp_OR_RR)) {
+  if(severity_temp_OR_RR$Severity[i] == 4) {
+    severity_temp_OR_RR$Severity[i] <- 1
+  }
+  if(severity_temp_OR_RR$Severity[i] == 3) {
+    severity_temp_OR_RR$Severity[i] <- 0
+  }
+}
+
+temp_check <- function(dt, temp, index) {
+  if (dt$`Temperature(F)`[index] < temp) {
+    dt$large_temp[index] = 0
+  } else {
+    dt$large_temp[index] = 1
+  }
+  return(dt)
+}
+
+for (i in 1:nrow(severity_temp_OR_RR)) {
+  severity_temp_OR_RR <- temp_check(severity_temp_OR_RR, 33.0, i)
+}
+
+# Writing code to calculate RR and OR
+check_OR <- function(dt, col_name) {
+  high_temp_true <- sum(dt$Severity == 1 & dt[col_name] == 1)
+  high_temp_false <- sum(dt$Severity == 1 & dt[col_name] == 0)
+  low_temp_true <- sum(dt$Severity == 0 & dt[col_name] == 1)
+  low_temp_false <- sum(dt$Severity == 0 & dt[col_name] == 0)
+  return((high_temp_true / high_temp_false) / (low_temp_true / low_temp_false))
+}
+
+check_RR <- function(dt, col_name) {
+  high_temp_true <- sum(dt$Severity == 1 & dt[col_name] == 1)
+  high_temp_false <- sum(dt$Severity == 1 & dt[col_name] == 0)
+  low_temp_true <- sum(dt$Severity == 0 & dt[col_name] == 1)
+  low_temp_false <- sum(dt$Severity == 0 & dt[col_name] == 0)
+  return((high_temp_true / (high_temp_true + high_temp_false)) / (low_temp_true / (low_temp_true + low_temp_false)))
+}
+
+check_OR(severity_temp_OR_RR, "large_temp")
+check_RR(severity_temp_OR_RR, "large_temp")
+

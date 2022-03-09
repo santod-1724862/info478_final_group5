@@ -40,6 +40,57 @@ page_one <- tabPanel(
 ui <- navbarPage(
   "Title",
   page_one,
-  map_page
+  map_page,
+  summary_panel
   #insert other pages here
+)
+
+summary_panel <- tabPanel(
+  title = h2("Project Details"),
+  # All paragraphs on main panel
+  mainPanel(
+    tags$h1(
+      id = "conclusion",
+      paste("Main Takeaways")
+    ),
+    tags$p(
+      id = "conclusion",
+      paste("This is the area I set aside to report all findings.
+            This is the area I set aside to report all findings.
+            This is the area I set aside to report all findings.
+            This is the area I set aside to report all findings.
+            This is the area I set aside to report all findings.
+            This is the area I set aside to report all findings.
+            This is the area I set aside to report all findings.")
+    ),
+    tags$h1(
+      id = "data_collection",
+      paste("Main Sources of Data Collection and Methods Used")
+    ),
+    tags$p(
+      id = "data_collection",
+      paste("For our sources we had to take datasets from three separate locations. The first two 
+            data sets found were from CDC datand the GBD compare tool. --HOW WERE THESE CLEANED--.
+            Our largest data set came from Kaggle and was compiled using an API by a scientist working 
+            for Lyft(tm). This set originally came with over a million entries but was reduced to 45k rows
+            after filtering NA values and accidents with a severity score of 2 or below.")
+    ),
+    tags$h1(
+      id = "limitations",
+      paste("Limitations of Insights Derived from Datasets")
+    ),
+    tags$p(
+      id = "limitations",
+      paste("One major limitation that should be noted is that the population sample had to be
+            drasticially reduced in order for the file to be uploaded onto GitHub. The cleaning 
+            mentioned in our data collection removed a large majority of accidents and thus we had to
+            adjust our questions to focus on causes of severe accidents rather than all traffic accidents.
+            The validity of looking at temperature, humidity, and associated OR/RR values may be low
+            due to the dataset being taken of Kaggle and not officially collected. 
+            
+            The GBD data reported on the aggregate of various risk factors which may reduce the ability for insights to apply to 
+            individuals. Each row reported the total death or death rate which reduced the amount of 
+            calculations we could do")
+    )
+  )
 )
