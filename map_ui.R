@@ -1,7 +1,7 @@
 library(leaflet)
 library(DT)
 map_page <- tabPanel(
-  titlePanel("Interactive Map"),
+  "Interactive Map",
   sidebarLayout(
     sidebarPanel(
       selectInput(
