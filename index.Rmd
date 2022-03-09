@@ -12,7 +12,6 @@ library('patchwork')
 options(scipen = 999)
 ```
 
-
 ## Reporting basic statistics
 
 ```{r summary, echo=FALSE}
@@ -28,12 +27,9 @@ temp_histogram + temp_col_chart
 bar_states
 ```
 
-The first histogram shows the distribution of temperatures that various accidents occurred. As would be expected, the most accidents occur at mild temperatures, due to there being the most number of days in that range compared to more extreme temperatures. However, it is interpreting to not that there are more accidents that occur in significantly warm weather (more than 70 °F), than accidents that occur in colder weather (under 49 °F). It will be interesting to see how much of this temperature distribution is explained by location (as a result of highly populated cities in the U.S. with warmer average temperatures such as Los Angeles, Dallas, and Miami), so seeing the distribution of colder and warmer weather accidents on a map is something that will be interesting to look at for the final part of this project. 
-The final bar graph represents the accidents that occurred in the United States between February of 2016 and December of 2020 by State. It shows that Illinois and New York have the largest weight within the dataset. There is a wide range of reported accidents depending on location. 
-
+The first histogram shows the distribution of temperatures that various accidents occurred. As would be expected, the most accidents occur at mild temperatures, due to there being the most number of days in that range compared to more extreme temperatures. However, it is interpreting to not that there are more accidents that occur in significantly warm weather (more than 70 °F), than accidents that occur in colder weather (under 49 °F). It will be interesting to see how much of this temperature distribution is explained by location (as a result of highly populated cities in the U.S. with warmer average temperatures such as Los Angeles, Dallas, and Miami), so seeing the distribution of colder and warmer weather accidents on a map is something that will be interesting to look at for the final part of this project. The final bar graph represents the accidents that occurred in the United States between February of 2016 and December of 2020 by State. It shows that Illinois and New York have the largest weight within the dataset. There is a wide range of reported accidents depending on location.
 
 ## Relationship/Correlation Visualizations
-
 
 ```{r correlation, echo=FALSE}
 age_scatter
