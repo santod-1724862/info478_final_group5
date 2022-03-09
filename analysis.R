@@ -15,27 +15,6 @@ gbd_age <- read_csv('Data/gbd_age.csv')
 
 # DATA CLEANING
 
-# Motor_Vehicle_Occupant_Death_Rate__by_Age_and_Gender__2012___2014__All_States
-# Get motor vehicle data
-motor_vehicle_death <-
-  read.csv("Data/motor_vehicle_death.csv") %>% na_if("") %>%
-  setNames(tolower(gsub("\\.+", "_", names(.)))) %>% drop_na(state) %>%
-  pivot_longer(
-    cols = all_ages_2012:female_2014,
-    names_to = c("type", "year"),
-    names_pattern = "(.+)_(2014|2012)"
-  )
-
-motor_vehicle_death_gender <- motor_vehicle_death %>%
-  filter(type == "male" | type == "female")
-motor_vehicle_death_age <- motor_vehicle_death %>%
-  filter(str_detect(type, "age_")) %>%
-  mutate(type = gsub("age_", "", type)) %>%
-  separate(type, c("age_min", "age_max"), sep = "_")
-motor_vehicle_death_all <- motor_vehicle_death %>%
-  filter(type == "all_ages") %>% select(-type)
-
-
 # Get impaired driving data
 impaired_driving_death <-
   read.csv("Data/impaired_driving_death.csv") %>%
@@ -183,4 +162,59 @@ high_temp_true <- sum(severity_temp_OR_RR$Severity == 0 & severity_temp_OR_RR$la
 
 state_OR_RR <- state_agg %>%
   summarise(count = n())
->>>>>>> 440f6fef97b2e32ac53a74816c684d19a3e0c949
+
+# Function to choose State to find OR/RR
+
+check_OR_state <- function(state_OR_RR, state) {
+  for (i in 1:nrow(state_OR_RR)) {
+    if(state_OR_RR$Severity[i] == 1 & state_OR_RR$large_temp[i] == 1 & state_OR_RR$State[i] == state) {
+      high_temp_true <- state_OR_RR[count][i]
+    } else {
+      high_temp_true <- 0
+    }
+    if(state_OR_RR$Severity[i] == 1 & state_OR_RR$large_temp[i] == 0 & state_OR_RR$State[i] == state) {
+      high_temp_false <- state_OR_RR$count[i]
+    } else {
+      high_temp_false <- 0
+    }
+    if(state_OR_RR$Severity[i] == 0 & state_OR_RR$large_temp[i] == 1 & state_OR_RR$State[i] == state) {
+      low_temp_true <- state_OR_RR$count[i]
+    } else {
+      low_temp_true <- 0
+    }
+    if(state_OR_RR$Severity[i] == 0 & state_OR_RR$large_temp[i] == 0 & state_OR_RR$State[i] == state) {
+      low_temp_false <- state_OR_RR$count[i]
+    } else {
+      low_temp_false <- 0
+    }
+  }
+  return((high_temp_true / high_temp_false) / (low_temp_true / low_temp_false))
+}
+
+check_OR_state <- function(state_OR_RR, state) {
+  high_temp_true <- state_OR_RR %>%
+    filter(State == state, Severity == 1, large_temp == 1)
+  high_temp_false <- state_OR_RR %>%
+    filter(State == state, Severity == 1, large_temp == 0)
+  low_temp_true <- state_OR_RR %>%
+    filter(State == state, Severity == 0, large_temp == 1)
+  low_temp_false <- state_OR_RR %>%
+    filter(State == state, Severity == 0, large_temp == 0)
+  return((high_temp_true$count / high_temp_false$count) / (low_temp_true$count / low_temp_false$count))
+}
+
+check_RR_state <-function(state_OR_RR, state) {
+  high_temp_true <- state_OR_RR %>%
+    filter(State == state, Severity == 1, large_temp == 1)
+  high_temp_false <- state_OR_RR %>%
+    filter(State == state, Severity == 1, large_temp == 0)
+  low_temp_true <- state_OR_RR %>%
+    filter(State == state, Severity == 0, large_temp == 1)
+  low_temp_false <- state_OR_RR %>%
+    filter(State == state, Severity == 0, large_temp == 0)
+  return((high_temp_true$count / (high_temp_true$count + high_temp_false$count)) 
+         / (low_temp_true$count / (low_temp_true$count + low_temp_false$count)))
+}
+
+check_OR_state(state_OR_RR, "TX")
+check_RR_state(state_OR_RR, "TX")
