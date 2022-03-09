@@ -16,6 +16,7 @@ gbd_age <- read_csv('Data/gbd_age.csv')
 # DATA CLEANING
 
 # Motor_Vehicle_Occupant_Death_Rate__by_Age_and_Gender__2012___2014__All_States
+# Get motor vehicle data
 motor_vehicle_death <-
   read.csv("Data/motor_vehicle_death.csv") %>% na_if("") %>%
   setNames(tolower(gsub("\\.+", "_", names(.)))) %>% drop_na(state) %>%
@@ -23,7 +24,7 @@ motor_vehicle_death <-
     cols = all_ages_2012:female_2014,
     names_to = c("type", "year"),
     names_pattern = "(.+)_(2014|2012)"
-  ) %>% mutate(state = tolower(state))
+  )
 
 motor_vehicle_death_gender <- motor_vehicle_death %>%
   filter(type == "male" | type == "female")
@@ -34,12 +35,8 @@ motor_vehicle_death_age <- motor_vehicle_death %>%
 motor_vehicle_death_all <- motor_vehicle_death %>%
   filter(type == "all_ages") %>% select(-type)
 
-# Bar Graph on the distribution of traffic accident by state
-bar_states <- ggplot(accidents_by_temp, aes(x = State)) + 
-  geom_bar() +
-  labs(title = "Number of Traffic Accidents by State", y = "Amount of Accidents")
 
-# Impaired_Driving_Death_Rate__by_Age_and_Gender__2012___2014__All_States
+# Get impaired driving data
 impaired_driving_death <-
   read.csv("Data/impaired_driving_death.csv") %>%
   setNames(tolower(gsub("\\.+", "_", names(.)))) %>%
@@ -47,7 +44,7 @@ impaired_driving_death <-
     cols = all_ages_2012:female_2014,
     names_to = c("type", "year"),
     names_pattern = "(.+)_(2014|2012)"
-  ) %>% mutate(state = tolower(state))
+  )
 
 impaired_driving_death_gender <- impaired_driving_death %>%
   filter(type == "male" | type == "female")
@@ -186,38 +183,4 @@ high_temp_true <- sum(severity_temp_OR_RR$Severity == 0 & severity_temp_OR_RR$la
 
 state_OR_RR <- state_agg %>%
   summarise(count = n())
-
-# Function to choose State to find OR/RR
-
-check_OR_state <- function(state_OR_RR, state) {
-  for (i in 1:nrow(state_OR_RR)) {
-    if(state_OR_RR$Severity[i] == 1 & state_OR_RR$large_temp[i] == 1 & state_OR_RR$State[i] == state) {
-      high_temp_true <- state_OR_RR[count][i]
-    } else {
-      high_temp_true <- 0
-    }
-    if(state_OR_RR$Severity[i] == 1 & state_OR_RR$large_temp[i] == 0 & state_OR_RR$State[i] == state) {
-      high_temp_false <- state_OR_RR$count[i]
-    } else {
-      high_temp_false <- 0
-    }
-    if(state_OR_RR$Severity[i] == 0 & state_OR_RR$large_temp[i] == 1 & state_OR_RR$State[i] == state) {
-      low_temp_true <- state_OR_RR$count[i]
-    } else {
-      low_temp_true <- 0
-    }
-    if(state_OR_RR$Severity[i] == 0 & state_OR_RR$large_temp[i] == 0 & state_OR_RR$State[i] == state) {
-      low_temp_false <- state_OR_RR$count[i]
-    } else {
-      low_temp_false <- 0
-    }
-  }
-  return((high_temp_true / high_temp_false) / (low_temp_true / low_temp_false))
-}
-
-check_OR_state(state_OR_RR, "AL")
-if (state_OR_RR$Severity[1] == 0 & state_OR_RR$large_temp[1] == 0 & state_OR_RR$State[1] == "AL") {
-  i <- state_OR_RR$count[4]
-} else {
-  i = 0
-}
+>>>>>>> 440f6fef97b2e32ac53a74816c684d19a3e0c949

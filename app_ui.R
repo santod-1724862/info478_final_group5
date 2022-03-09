@@ -73,7 +73,7 @@ metric_input <- radioButtons(
 # age ui
 
 age_page <- tabPanel(
-  "Accidents by Age Group",
+  titlePanel("Accidents by Age Group"),
   sidebarLayout(
     sidebarPanel(
       years_input,
@@ -89,15 +89,6 @@ age_page <- tabPanel(
       textOutput(outputId = "age_analysis")
     )
   )
-)
-
-# --------- DEFINING UI: PUTTING PAGES TOGETHER ---------- 
-ui <- navbarPage(
-  "Title",
-  map_page,
-  age_page,
-  summary_panel
-  #insert other pages here
 )
 
 summary_panel <- tabPanel(
@@ -149,3 +140,13 @@ summary_panel <- tabPanel(
     )
   )
 )
+
+# --------- DEFINING UI: PUTTING PAGES TOGETHER ---------- 
+ui <- navbarPage(
+  "US Driving Death Analysis",
+  map_page,
+  age_page,
+  summary_panel
+  #insert other pages here
+)
+
