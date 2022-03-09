@@ -183,4 +183,3 @@ high_temp_true <- sum(severity_temp_OR_RR$Severity == 0 & severity_temp_OR_RR$la
 
 state_OR_RR <- state_agg %>%
   summarise(count = n())
->>>>>>> 440f6fef97b2e32ac53a74816c684d19a3e0c949
