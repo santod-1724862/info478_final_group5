@@ -6,7 +6,7 @@ library(scales)
 library(tidyverse)
 
 
-accidents_by_temp <- read_csv('Data/accident_data_large.csv')
+accidents_by_temp <- read_csv('Data/accidents_by_temp_category.csv')
 
 gbd_data <- read_csv('Data/GBD_data.csv')
 
@@ -99,10 +99,10 @@ temps_ordered <- c('Freezing (Below 32)', 'Cold (between 32 and 49)', 'Mild (bet
                    'Warm (between 70 and 89)', 'Hot (above 90)')
 
 temps_grouped <- accidents_by_temp %>%
-  group_by(`temp_range(F)`) %>%
+  group_by(temp_cat) %>%
   summarize(Accidents = n())
 
-temps_grouped$`temp_range(F)` <- factor(temps_grouped$`temp_range(F)`, levels = temps_ordered)
+temps_grouped$temp_cat <- factor(temps_grouped$temp_cat, levels = temps_ordered)
 
 
 temp_histogram <- accidents_by_temp %>%
@@ -111,7 +111,7 @@ temp_histogram <- accidents_by_temp %>%
   labs(title = "Distribution of Accidents by Temperature", x = "Temperature (°F)")
 
 temp_col_chart <- temps_grouped %>%
-  ggplot(aes(x = `temp_range(F)`, y = Accidents)) +
+  ggplot(aes(x = temp_cat, y = Accidents)) +
   geom_col() + labs(title = "Accidents per Temperature Range", x = 'Temperature Range (°F)', y = 'Total Accidents') +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5))
 
@@ -133,7 +133,7 @@ age_scatter <- age_death_dalys %>%
 
 # Creating a dataset for finding OR/RR for Humidity and Temp
 severity_temp_OR_RR <- accidents_by_temp %>%
-  select(Severity, `temp_range(F)`, `Temperature(F)`, `Humidity(%)` , Weather_Timestamp, State)
+  select(Severity, temp_cat, `Temperature(F)`, `Humidity(%)` , Weather_Timestamp, State)
 
 for(i in 1:nrow(severity_temp_OR_RR)) {
   if(severity_temp_OR_RR$Severity[i] == 4) {
@@ -154,7 +154,7 @@ temp_check <- function(dt, temp, index) {
 }
 
 for (i in 1:nrow(severity_temp_OR_RR)) {
-  severity_temp_OR_RR <- temp_check(severity_temp_OR_RR, 33.0, i)
+  severity_temp_OR_RR <- temp_check(severity_temp_OR_RR, 67.0, i)
 }
 
 # Writing code to calculate RR and OR
@@ -173,7 +173,16 @@ check_RR <- function(dt, col_name) {
   low_temp_false <- sum(dt$Severity == 0 & dt[col_name] == 0)
   return((high_temp_true / (high_temp_true + high_temp_false)) / (low_temp_true / (low_temp_true + low_temp_false)))
 }
-
 check_OR(severity_temp_OR_RR, "large_temp")
 check_RR(severity_temp_OR_RR, "large_temp")
 
+
+state_agg <- severity_temp_OR_RR %>%
+  group_by(State, Severity, large_temp)
+
+# Create new data set of aggregate 
+high_temp_true <- sum(severity_temp_OR_RR$Severity == 0 & severity_temp_OR_RR$large_temp == 0
+                      & severity_temp_OR_RR$State == "AR")
+
+state_OR_RR <- state_agg %>%
+  summarise(count = n())

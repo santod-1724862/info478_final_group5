@@ -6,21 +6,8 @@ library(plotly)
 
 # source pages
 source("map_ui.R")
+source("analysis.R")
 # read dataset 
-
-
-# --------- CREATE WIDGETS ---------- 
-
-# choose county widget (this widget allows you to 
-# choose which county you want to have the plot focus on)
-
-
-
-
-# enrollment size widget (this widget allows you to choose the
-# range of enrollment size)
-
-
 
 # --------- CREATE PAGES ---------- 
 
