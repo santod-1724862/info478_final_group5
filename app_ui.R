@@ -91,15 +91,6 @@ age_page <- tabPanel(
   )
 )
 
-# --------- DEFINING UI: PUTTING PAGES TOGETHER ---------- 
-ui <- navbarPage(
-  "Title",
-  map_page,
-  age_page,
-  summary_panel
-  #insert other pages here
-)
-
 summary_panel <- tabPanel(
   title = h2("Project Details"),
   # All paragraphs on main panel
@@ -149,3 +140,13 @@ summary_panel <- tabPanel(
     )
   )
 )
+
+# --------- DEFINING UI: PUTTING PAGES TOGETHER ---------- 
+ui <- navbarPage(
+  "Title",
+  map_page,
+  age_page,
+  summary_panel
+  #insert other pages here
+)
+
