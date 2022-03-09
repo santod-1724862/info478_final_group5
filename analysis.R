@@ -16,6 +16,7 @@ gbd_age <- read_csv('Data/gbd_age.csv')
 # DATA CLEANING
 
 # Motor_Vehicle_Occupant_Death_Rate__by_Age_and_Gender__2012___2014__All_States
+# Get motor vehicle data
 motor_vehicle_death <-
   read.csv("Data/motor_vehicle_death.csv") %>% na_if("") %>%
   setNames(tolower(gsub("\\.+", "_", names(.)))) %>% drop_na(state) %>%
@@ -23,7 +24,7 @@ motor_vehicle_death <-
     cols = all_ages_2012:female_2014,
     names_to = c("type", "year"),
     names_pattern = "(.+)_(2014|2012)"
-  ) %>% mutate(state = tolower(state))
+  ) %>% rename(name = state)
 
 motor_vehicle_death_gender <- motor_vehicle_death %>%
   filter(type == "male" | type == "female")
@@ -34,12 +35,8 @@ motor_vehicle_death_age <- motor_vehicle_death %>%
 motor_vehicle_death_all <- motor_vehicle_death %>%
   filter(type == "all_ages") %>% select(-type)
 
-# Bar Graph on the distribution of traffic accident by state
-bar_states <- ggplot(accidents_by_temp, aes(x = State)) + 
-  geom_bar() +
-  labs(title = "Number of Traffic Accidents by State", y = "Amount of Accidents")
 
-# Impaired_Driving_Death_Rate__by_Age_and_Gender__2012___2014__All_States
+# Get impaired driving data
 impaired_driving_death <-
   read.csv("Data/impaired_driving_death.csv") %>%
   setNames(tolower(gsub("\\.+", "_", names(.)))) %>%
@@ -47,7 +44,7 @@ impaired_driving_death <-
     cols = all_ages_2012:female_2014,
     names_to = c("type", "year"),
     names_pattern = "(.+)_(2014|2012)"
-  ) %>% mutate(state = tolower(state))
+  ) %>% rename(name=state)
 
 impaired_driving_death_gender <- impaired_driving_death %>%
   filter(type == "male" | type == "female")
@@ -57,24 +54,6 @@ impaired_driving_death_age <- impaired_driving_death %>%
   separate(type, c("age_min", "age_max"), sep = "_")
 impaired_driving_death_all <- impaired_driving_death %>%
   filter(type == "all_ages") %>% select(-type)
-
-# DATA VISUALIZATIONS
-states_map_data <- map_data("state") %>% rename(state = region)
-death_ratio_map <-
-  left_join(states_map_data,
-            impaired_driving_death_all %>%
-              rename(impaired_death = value),
-            by = "state")
-death_ratio_map_data <- death_ratio_map %>%
-  left_join(motor_vehicle_death_all %>%
-              rename(vehicle_death = value) ,  by =
-              "state") %>%
-  mutate(ratio = impaired_death / vehicle_death)
-
-death_ratio_heatmap <- ggplot(death_ratio_map_data, aes(long, lat, group = group)) +
-  geom_polygon(aes(fill = ratio), color = "white") +
-  scale_fill_viridis_c(option = "C") + theme_void() + labs(title="Heatmap of Impaired Driving Deaths to Overall Driving Deaths")
-
 
 # statistical testing
 
