@@ -5,9 +5,9 @@ account: jeremiahsantos
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 5816497
-bundleId: 5664718
+bundleId: 5664761
 url: https://jeremiahsantos.shinyapps.io/info478_final_group5/
-when: 1646884798.6061
-lastSyncTime: 1646884798.60619
+when: 1646886080.48855
+lastSyncTime: 1646886080.48856
 asMultiple: FALSE
 asStatic: FALSE

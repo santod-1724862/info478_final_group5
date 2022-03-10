@@ -120,7 +120,7 @@ summary_panel <- tabPanel(
       id = "conclusion",
       paste("Main Insights")
     ),
-    tags$h3(id = "conclusion",
+    tags$h4(id = "conclusion",
             paste("Interactive Map Takeaways")),
     tags$p(
       id = "conclusion",
@@ -129,11 +129,21 @@ summary_panel <- tabPanel(
             majority of accidents tend to be focused in more central and southeastern states and less 
             along the west and east coasts. Over time states had kept a similar death rate.")
     ),
-    tags$h3(id = "Conclusion",
+    tags$h4(id = "Conclusion",
             paste("Accidents by Age Group Takeaways")),
     tags$p(
       id = "conclusion",
-      paste("WHOA CHECK THAT OUT ITS WILD")
+      paste("Looking at the total estimates of accidents can be misleading as the dataset has less 
+            occurrences in states that would be indicated of higher risk through the map interactive.
+            However, looking at deaths per 100,000 shows that certain states have higher rates of accidents.
+            Also, despite not being the majority population ages 20-24 and over 75+ contributed most
+            to the total death rate per 100,000 during the 4 year period.")
+    ),
+    tags$h4(id = "conclusion",
+            paste("High Temp & High Severity OR/RR Insights")),
+    tags$p(
+      id = "conclusion",
+      paste("THIS SECTION IS BAD")
     ),
     tags$h1(
       id = "data_collection",
