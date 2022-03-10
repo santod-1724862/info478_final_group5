@@ -156,11 +156,12 @@ summary_panel <- tabPanel(
     tags$p(
       id = "data_collection",
       paste("For our sources we had to take datasets from three separate locations. The first two 
-            data sets found were from CDC datand the GBD compare tool. --HOW WERE THESE CLEANED--.
-            Our largest data set came from Kaggle and was compiled using an API by a scientist working 
-            for Lyft(tm). This set originally came with over a million entries but was reduced to 45k rows
-            after filtering NA values and accidents with a severity score of 2 or below.")
+            data sets found were from CDC datand the GBD compare tool.")
     ),
+    h3("Data Cleaning Process"),
+    p("Our largest data set came from Kaggle and was compiled using an API by a scientist working 
+            for Lyft(tm). This set originally came with over a million entries but was reduced to 45k rows
+            after filtering NA values and accidents with a severity score of 2 or below."),
     tags$h1(
       id = "limitations",
       paste("Limitations of Insights Derived from Datasets")
@@ -187,15 +188,13 @@ intro_panel <- tabPanel(
       id = "intro_title",
       paste("Traffic Accident Analysis: David, Derrick, Jason, & Jeremiah")
     ),
-    tags$p(
+    p(
       id = "intro_paragraph",
-      paste("We intitially set out for the purpose of understanding the extent different risk
+      "We intitially set out for the purpose of understanding the extent different risk
             factors affect the prevalence of driving related accidents. Due to problems with data 
-            collection we decided to look at factors such as **AGE**, **TEMPERATURE LEVEL**, and
-            **LOCATION** to better understand trends that occur in the United States. We will mostly 
+            collection we decided to look at factors such as", strong(" age, temperature and location "),"to better understand trends that occur in the United States. We will mostly 
             be concerned with high severity accidents versus low severity accidents and how these
-            may differ or share similarities to each other.")
-    ),
+            may differ or share similarities to each other."),
     tags$h2(
       id = "Future_Research",
       paste("Looking Towards the Future")
