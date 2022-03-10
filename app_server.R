@@ -41,6 +41,16 @@ server <- function(input, output) {
   })
   
   output$ratio_scatter <- renderPlot ({
+    severity_temp_OR_RR <- accidents_by_temp %>%
+      select(Severity, temp_cat, `Temperature(F)`, `Humidity(%)` , Weather_Timestamp, State)
+    
+    for (i in 1:nrow(severity_temp_OR_RR)) {
+      severity_temp_OR_RR <- temp_check(severity_temp_OR_RR, input$temp, i)
+    }
+    fixed_temp <- severity_temp_OR_RR %>%
+      group_by(State, Severity, large_temp) %>%
+      summarise(count = n())
+    
     filtered_rr <- state_OR_RR %>%
       filter(State %in% input$state_or_rr)
     

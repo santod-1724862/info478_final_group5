@@ -42,6 +42,8 @@ or_state_input <- selectInput(
   choices = unique(state_OR_RR$State)
 )
 
+temp_input <- numericInput("temp", "Temperature", value = 60, min = -10, max = 110)
+
 # age page widgets
 
 state_input <- selectInput(
@@ -103,7 +105,8 @@ tempature_or_rr_page <- tabPanel(
   "Tempature Relative Risk and Odds Risk",
   sidebarLayout(
     sidebarPanel(
-      or_state_input
+      or_state_input,
+      temp_input
     ),
     mainPanel (
       h3("Relative Risk and Odds Risk Comparison by Tempature"),
