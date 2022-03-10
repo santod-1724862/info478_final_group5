@@ -40,23 +40,15 @@ server <- function(input, output) {
     
   })
   
-  output$or_bar <- renderPlot ({
+  output$ratio_scatter <- renderPlot ({
     filtered_rr <- state_OR_RR %>%
       filter(State %in% input$state_or_rr)
     
-    ggplot(state_OR_RR, aes(y=check_OR_state(state_OR_RR, input$state_or_rr), x=input$state_or_rr)) + 
-      geom_bar(position="dodge", stat="identity")
+    ggplot(state_OR_RR, aes(y=check_OR_state(state_OR_RR, input$state_or_rr), x=check_RR_state(state_OR_RR, input$state_or_rr))) + 
+      geom_point() +
+      labs(title="Odds Risk and Relative Risk", x = "Relative Risk", y = "Odds Risk")
   })
-  
-  output$rr_bar <- renderPlot ({
-    
-    filtered_rr <- state_OR_RR %>%
-      filter(State %in% input$state_or_rr)
-    
-    ggplot(state_OR_RR, aes(y=check_RR_state(state_OR_RR, input$state_or_rr), x=input$state_or_rr)) + 
-      geom_bar(position="dodge", stat="identity")
-  })
-  
+
   
   output$age_bar <- renderPlot({
     

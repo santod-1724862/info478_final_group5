@@ -106,8 +106,8 @@ tempature_or_rr_page <- tabPanel(
       or_state_input
     ),
     mainPanel (
-      plotOutput("or_bar"),
-      plotOutput("rr_bar")
+      h3("Relative Risk and Odds Risk Comparison by Tempature"),
+      plotOutput("ratio_scatter"),
     )
   )
 )
