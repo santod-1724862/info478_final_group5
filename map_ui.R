@@ -9,7 +9,7 @@ map_page <- tabPanel(
         label = "Map Type",
         choices = c("Driving Deaths per 100,000" = "dd", 
                     "Impaired Driving Deaths per 100,000" = "idd", 
-                    "Ratio of Impaired Driving Deaths to Total Driving Deaths" = "ratio")
+                    "Percent of Driving Deaths Involving Impaired Drivers" = "ratio")
       ),
       selectInput(
         inputId = "map_year",
@@ -21,7 +21,7 @@ map_page <- tabPanel(
       h3("Alcohol and Vehicle Driving Deaths"),
       h4("Map"),
       p(
-        "An interactive map visualizing driving deaths and impaired driving deaths in the United States. It was interesting to see that ",
+        "An interactive map visualizing driving deaths and impaired driving deaths in the United States. The percent of driving deaths involving impaired drivers is a visualization of how many driving deaths involved impaired drivers in each state. It was interesting to see that ",
         strong("Hawaii"),
         " has by far the highest percentage of vehicle deaths involving impaired drivers (in both 2012 and 2014). Also note that impaired driving death data for Rhode Island and Vermont are", strong("only available in 2012")
       ), 
