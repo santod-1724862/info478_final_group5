@@ -118,17 +118,22 @@ summary_panel <- tabPanel(
   mainPanel(
     tags$h1(
       id = "conclusion",
-      paste("Main Takeaways")
+      paste("Main Insights")
     ),
+    tags$h3(id = "conclusion",
+            paste("Interactive Map Takeaways")),
     tags$p(
       id = "conclusion",
-      paste("This is the area I set aside to report all findings.
-            This is the area I set aside to report all findings.
-            This is the area I set aside to report all findings.
-            This is the area I set aside to report all findings.
-            This is the area I set aside to report all findings.
-            This is the area I set aside to report all findings.
-            This is the area I set aside to report all findings.")
+      paste("The interactive map of the US provides a better overview of how different parts of the
+            country differ in driving realted accidents. The reported deaths per 100,000 shows that the 
+            majority of accidents tend to be focused in more central and southeastern states and less 
+            along the west and east coasts. Over time states had kept a similar death rate.")
+    ),
+    tags$h3(id = "Conclusion",
+            paste("Accidents by Age Group Takeaways")),
+    tags$p(
+      id = "conclusion",
+      paste("WHOA CHECK THAT OUT ITS WILD")
     ),
     tags$h1(
       id = "data_collection",
@@ -153,10 +158,9 @@ summary_panel <- tabPanel(
             mentioned in our data collection removed a large majority of accidents and thus we had to
             adjust our questions to focus on causes of severe accidents rather than all traffic accidents.
             The validity of looking at temperature, humidity, and associated OR/RR values may be low
-            due to the dataset being taken of Kaggle and not officially collected. 
-            
+            due to the dataset being taken of Kaggle and not officially collected.
             The GBD data reported on the aggregate of various risk factors which may reduce the ability for insights to apply to 
-            individuals. Each row reported the total death or death rate which reduced the amount of 
+            individuals in relation to GBD visualizations. Each row reported the total death or death rate which reduced the amount of 
             calculations we could do")
     )
   )

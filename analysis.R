@@ -201,32 +201,6 @@ state_OR_RR <- state_agg %>%
 # Function to choose State to find OR/RR
 
 check_OR_state <- function(state_OR_RR, state) {
-  for (i in 1:nrow(state_OR_RR)) {
-    if(state_OR_RR$Severity[i] == 1 & state_OR_RR$large_temp[i] == 1 & state_OR_RR$State[i] == state) {
-      high_temp_true <- state_OR_RR[count][i]
-    } else {
-      high_temp_true <- 0
-    }
-    if(state_OR_RR$Severity[i] == 1 & state_OR_RR$large_temp[i] == 0 & state_OR_RR$State[i] == state) {
-      high_temp_false <- state_OR_RR$count[i]
-    } else {
-      high_temp_false <- 0
-    }
-    if(state_OR_RR$Severity[i] == 0 & state_OR_RR$large_temp[i] == 1 & state_OR_RR$State[i] == state) {
-      low_temp_true <- state_OR_RR$count[i]
-    } else {
-      low_temp_true <- 0
-    }
-    if(state_OR_RR$Severity[i] == 0 & state_OR_RR$large_temp[i] == 0 & state_OR_RR$State[i] == state) {
-      low_temp_false <- state_OR_RR$count[i]
-    } else {
-      low_temp_false <- 0
-    }
-  }
-  return((high_temp_true / high_temp_false) / (low_temp_true / low_temp_false))
-}
-
-check_OR_state <- function(state_OR_RR, state) {
   high_temp_true <- state_OR_RR %>%
     filter(State == state, Severity == 1, large_temp == 1)
   high_temp_false <- state_OR_RR %>%
