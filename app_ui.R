@@ -143,7 +143,11 @@ summary_panel <- tabPanel(
             paste("High Temp & High Severity OR/RR Insights")),
     tags$p(
       id = "conclusion",
-      paste("THIS SECTION IS BAD")
+      paste("For this graph we attempted to record RR and OR values for the dataset. Initially, 
+            we wanted users to be able to pick the temperature cut-off point and all temperatures above
+            a certain point will be assigned as 'High_Temp' and see how this intersects with how severe an
+            accident is. The numbers reported show the relative risk of getting into a high severity accident
+            given that the temperature is above a certain point." )
     ),
     tags$h1(
       id = "data_collection",
@@ -176,10 +180,41 @@ summary_panel <- tabPanel(
   )
 )
 
+intro_panel <- tabPanel(
+  title = "Project Summary",
+  mainPanel(
+    tags$h2(
+      id = "intro_title",
+      paste("Traffic Accident Analysis: David, Derrick, Jason, & Jeremiah")
+    ),
+    tags$p(
+      id = "intro_paragraph",
+      paste("We intitially set out for the purpose of understanding the extent different risk
+            factors affect the prevalence of driving related accidents. Due to problems with data 
+            collection we decided to look at factors such as **AGE**, **TEMPERATURE LEVEL**, and
+            **LOCATION** to better understand trends that occur in the United States. We will mostly 
+            be concerned with high severity accidents versus low severity accidents and how these
+            may differ or share similarities to each other.")
+    ),
+    tags$h2(
+      id = "Future_Research",
+      paste("Looking Towards the Future")
+    ),
+    tags$p(
+      id = "intro_paragraph",
+      paste("We wanted the information derived from analysis to fit into the entirety of US
+            demographic. Future research could look into the prevalence of death rates in more central
+            located states such as Wyoming, Montana, or even Loiusiana. Perhaps an interesting metric to 
+            look at as well is we were given more time is road conditions as well.")
+    )
+  )
+)
+
 # --------- DEFINING UI: PUTTING PAGES TOGETHER ---------- 
 ui <- navbarPage(
   theme = bs_theme(version = 4, bootswatch = "minty"),
   titlePanel("US Driving Death Analysis"),
+  intro_panel,
   map_page,
   age_page,
   tempature_or_rr_page,
