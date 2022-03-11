@@ -47,6 +47,7 @@ server <- function(input, output) {
     for (i in 1:nrow(severity_temp_OR_RR)) {
       severity_temp_OR_RR <- temp_check(severity_temp_OR_RR, input$temp, i)
     }
+    
     fixed_temp <- severity_temp_OR_RR %>%
       group_by(State, Severity, large_temp) %>%
       summarise(count = n())
@@ -57,6 +58,7 @@ server <- function(input, output) {
     ggplot(state_OR_RR, aes(y=check_OR_state(state_OR_RR, input$state_or_rr), x=check_RR_state(state_OR_RR, input$state_or_rr))) + 
       geom_point() +
       labs(title="Odds Risk and Relative Risk", x = "Relative Risk", y = "Odds Risk")
+    
   })
 
   

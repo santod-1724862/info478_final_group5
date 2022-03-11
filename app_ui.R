@@ -197,7 +197,10 @@ intro_panel <- tabPanel(
             factors affect the prevalence of driving related accidents. Due to problems with data 
             collection we decided to look at factors such as", strong(" age, temperature and location "),"to better understand trends that occur in the United States. We will mostly 
             be concerned with high severity accidents versus low severity accidents and how these
-            may differ or share similarities to each other."),
+            may differ or share similarities to each other. Some questions we want to find are how does 
+      age account for the distribution of accidents in the US? What is the risk that temperature poses on the
+      severity of the accident? Where are driving related deaths most prevalent? Does alcohol account for rising
+      death rates in various states?"),
     tags$h2(
       id = "Future_Research",
       paste("Looking Towards the Future")
